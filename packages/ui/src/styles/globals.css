@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Capita-Lens design tokens.
+ * Light = calm, paper-white, ink text (Notion/Stripe).
+ * Dark  = deep slate terminal (Bloomberg/Palantir).
+ * Brand = a confident electric indigo used sparingly as signal.
+ */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 24% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 24% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 24% 11%;
+
+    /* Primary = confident near-black ink for main actions */
+    --primary: 222 47% 11%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 16% 96%;
+    --secondary-foreground: 222 24% 16%;
+
+    --muted: 220 16% 96%;
+    --muted-foreground: 220 9% 43%;
+
+    --accent: 220 16% 95%;
+    --accent-foreground: 222 24% 16%;
+
+    /* Brand signal */
+    --brand: 243 75% 59%;
+    --brand-foreground: 0 0% 100%;
+    --brand-muted: 243 75% 96%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 56% 40%;
+    --warning: 38 92% 50%;
+    --danger: 0 72% 51%;
+    --info: 217 91% 60%;
+
+    --border: 220 14% 91%;
+    --input: 220 14% 91%;
+    --ring: 243 75% 59%;
+
+    --radius: 0.65rem;
+  }
+
+  .dark {
+    --background: 224 32% 6%;
+    --foreground: 214 20% 92%;
+
+    --card: 224 28% 9%;
+    --card-foreground: 214 20% 92%;
+
+    --popover: 224 28% 9%;
+    --popover-foreground: 214 20% 92%;
+
+    --primary: 214 20% 96%;
+    --primary-foreground: 224 32% 8%;
+
+    --secondary: 223 20% 15%;
+    --secondary-foreground: 214 20% 92%;
+
+    --muted: 223 20% 14%;
+    --muted-foreground: 218 12% 60%;
+
+    --accent: 223 20% 16%;
+    --accent-foreground: 214 20% 92%;
+
+    --brand: 243 82% 67%;
+    --brand-foreground: 0 0% 100%;
+    --brand-muted: 243 40% 18%;
+
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 52% 46%;
+    --warning: 38 92% 55%;
+    --danger: 0 72% 58%;
+    --info: 217 91% 65%;
+
+    --border: 223 18% 18%;
+    --input: 223 18% 20%;
+    --ring: 243 82% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+  /* Tabular figures for all data/metrics */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  /* Subtle premium surfaces */
+  .surface-grid {
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--border) / 0.4) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}

@@ -1,0 +1,44 @@
+/* Neon Auth UI compiled component styles (self-contained Tailwind build). */
+@import "@neondatabase/auth-ui/css";
+/* Our design system (tokens + Tailwind base/components/utilities). */
+@import "@capita/ui/styles.css";
+
+/*
+ * Bridge our design tokens into Neon Auth UI. The library reads `var(--popover)`
+ * etc. as full colours, but our tokens are bare HSL triplets meant for hsl().
+ * Remap its `--neon-*` variables to valid colours from our theme. `:root:root`
+ * matches the specificity of the library's `:root.dark` rule so this wins in
+ * both light and dark, and hsl(var(--token)) re-resolves per theme.
+ */
+:root:root {
+  --neon-radius: var(--radius);
+
+  --neon-background: hsl(var(--background));
+  --neon-foreground: hsl(var(--foreground));
+  --neon-card: hsl(var(--card));
+  --neon-card-foreground: hsl(var(--card-foreground));
+  --neon-popover: hsl(var(--popover));
+  --neon-popover-foreground: hsl(var(--popover-foreground));
+  --neon-primary: hsl(var(--primary));
+  --neon-primary-foreground: hsl(var(--primary-foreground));
+  --neon-secondary: hsl(var(--secondary));
+  --neon-secondary-foreground: hsl(var(--secondary-foreground));
+  --neon-muted: hsl(var(--muted));
+  --neon-muted-foreground: hsl(var(--muted-foreground));
+  --neon-accent: hsl(var(--accent));
+  --neon-accent-foreground: hsl(var(--accent-foreground));
+  --neon-destructive: hsl(var(--destructive));
+  --neon-destructive-foreground: hsl(var(--destructive-foreground));
+  --neon-border: hsl(var(--border));
+  --neon-input: hsl(var(--input));
+  --neon-ring: hsl(var(--ring));
+
+  --neon-sidebar: hsl(var(--card));
+  --neon-sidebar-foreground: hsl(var(--card-foreground));
+  --neon-sidebar-primary: hsl(var(--primary));
+  --neon-sidebar-primary-foreground: hsl(var(--primary-foreground));
+  --neon-sidebar-accent: hsl(var(--accent));
+  --neon-sidebar-accent-foreground: hsl(var(--accent-foreground));
+  --neon-sidebar-border: hsl(var(--border));
+  --neon-sidebar-ring: hsl(var(--ring));
+}

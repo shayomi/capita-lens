@@ -1,0 +1,26 @@
+{
+  "name": "capita-lens",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "db:generate": "pnpm --filter @capita/db generate",
+    "db:migrate": "pnpm --filter @capita/db migrate",
+    "db:push": "pnpm --filter @capita/db push",
+    "db:seed": "pnpm --filter @capita/db seed",
+    "db:studio": "pnpm --filter @capita/db studio",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3"
+  }
+}

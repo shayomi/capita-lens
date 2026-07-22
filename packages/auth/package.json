@@ -1,0 +1,25 @@
+{
+  "name": "@capita/auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./roles": "./src/roles.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@capita/db": "workspace:*",
+    "@neondatabase/auth": "latest"
+  },
+  "peerDependencies": {
+    "next": ">=16.0.0",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@capita/config": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}

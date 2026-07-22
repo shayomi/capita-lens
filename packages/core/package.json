@@ -1,0 +1,22 @@
+{
+  "name": "@capita/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./scoring": "./src/scoring/index.ts",
+    "./validation": "./src/validation/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@capita/db": "workspace:*",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@capita/config": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}
