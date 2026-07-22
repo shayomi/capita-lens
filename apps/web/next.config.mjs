@@ -12,6 +12,7 @@ const nextConfig = {
   outputFileTracingRoot: root,
   transpilePackages: [
     "@capita/ui",
+    "@capita/ai",
     "@capita/auth",
     "@capita/core",
     "@capita/db",

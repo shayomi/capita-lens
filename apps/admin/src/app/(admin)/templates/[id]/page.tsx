@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Sparkles } from "lucide-react";
 import { Card, Badge, Button } from "@capita/ui";
 import { getTemplateDetail } from "@/lib/queries";
 
@@ -39,9 +39,17 @@ export default async function TemplateDetailPage({
             {template.description}
           </p>
         </div>
-        <Button disabled variant="outline">
-          Edit builder
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="outline">
+            <Link href={`/templates/${template.id}/analysis`}>
+              <Sparkles className="size-4" />
+              Analysis Studio
+            </Link>
+          </Button>
+          <Button disabled variant="outline">
+            Edit builder
+          </Button>
+        </div>
       </div>
 
       <div className="space-y-5">

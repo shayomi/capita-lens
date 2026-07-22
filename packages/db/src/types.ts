@@ -79,3 +79,39 @@ export interface CategoryThresholds {
   attention: number; // below this → attention
   onTrack: number; // below this → on_track, at/above → excellent
 }
+
+// ── AI analysis configuration (admin-authored, per template) ──────────
+
+/** A structured assessment rule the AI must apply. */
+export interface AnalysisRule {
+  id: string;
+  condition: string; // natural language, may reference question keys
+  effect: string; // what the AI should do when the condition holds
+}
+
+/** A custom narrative output the AI must produce and the dashboard renders. */
+export interface OutputSection {
+  key: string; // stable slug, e.g. "executive_summary"
+  title: string; // display title
+  guidance: string; // what the AI should write in this section
+}
+
+/**
+ * Per-template AI analysis configuration. Drives the OpenAI prompt and the
+ * structured output schema. Editable in the admin Analysis Studio.
+ */
+export interface AnalysisConfig {
+  enabled: boolean;
+  model: string; // OpenAI model id
+  temperature: number;
+  rubric: string; // prose instructions / persona
+  rules: AnalysisRule[];
+  outputSections: OutputSection[];
+}
+
+/** A produced narrative section (result of an OutputSection). */
+export interface AnalysisSectionResult {
+  key: string;
+  title: string;
+  body: string;
+}

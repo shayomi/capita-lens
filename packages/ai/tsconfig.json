@@ -1,0 +1,7 @@
+{
+  "extends": "@capita/config/tsconfig/library",
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "noEmit": true
+  }
+}

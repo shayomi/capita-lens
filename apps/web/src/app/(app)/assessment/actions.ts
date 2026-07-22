@@ -7,6 +7,7 @@ import {
   eq,
   and,
   type AnswerValue,
+  type QuestionOption,
 } from "@capita/db";
 import { requireUser } from "@capita/auth";
 import {
@@ -15,8 +16,17 @@ import {
   type EngineCategory,
   type AnswerMap,
 } from "@capita/core";
+import {
+  runAiAnalysis,
+  AiUnavailableError,
+  type AnalysisSectionResult,
+} from "@capita/ai";
 import { buildDocumentKey, getUploadUrl } from "@capita/storage";
 import { auth } from "@/lib/auth/server";
+import { formatAnswer } from "@/lib/format-answer";
+
+type AiSection = AnalysisSectionResult;
+type TemplateQuestionMeta = { type: string; options: QuestionOption[] | null };
 
 /** Ensure the assessment exists and belongs to the current user. */
 async function assertOwnedAssessment(assessmentId: string, userId: string) {
@@ -106,9 +116,99 @@ export async function submitAssessment(assessmentId: string) {
     thresholds: c.thresholds,
   }));
 
+  // Deterministic scores (always).
   const result = runAssessment({ questions, categories, answers });
-
   const idByCategoryKey = new Map(categoryRows.map((c) => [c.key, c.id]));
+
+  // AI analysis layer (hybrid): the engine owns the numbers, the model writes
+  // the narrative. Falls back to the engine's risks/recommendations if the AI
+  // is unavailable (no key, disabled, or an error).
+  const template = await db.query.templates.findFirst({
+    where: eq(schema.templates.id, assessment.templateId),
+    columns: { analysisConfig: true },
+  });
+
+  const descByKey = new Map(categoryRows.map((c) => [c.key, c.description]));
+  const sectionTitleByQ = new Map<string, string>();
+  const optionsByQ = new Map<string, TemplateQuestionMeta>();
+  for (const s of sections)
+    for (const q of s.questions) {
+      sectionTitleByQ.set(q.id, s.title);
+      optionsByQ.set(q.id, { type: q.type, options: q.options });
+    }
+
+  const analysisAnswers = answerRows
+    .filter((a) => a.value)
+    .map((a) => {
+      const meta = optionsByQ.get(a.questionId);
+      const q = questionRows.find((x) => x.id === a.questionId);
+      return {
+        section: sectionTitleByQ.get(a.questionId) ?? "",
+        label: q?.label ?? "",
+        value: formatAnswer(a.value!, meta?.type ?? "short_text", meta?.options),
+      };
+    });
+
+  let summary: string | null = null;
+  let analysisSections: AiSection[] | null = null;
+  let aiModel: string | null = null;
+  const rationaleByCat = new Map<string, string>();
+  let risksToWrite = result.risks.map((r, i) => ({
+    categoryKey: r.categoryKey ?? null,
+    title: r.title,
+    detail: r.detail ?? null,
+    severity: r.severity,
+    displayOrder: i,
+  }));
+  let recsToWrite = result.recommendations.map((r) => ({
+    categoryKey: r.categoryKey ?? null,
+    title: r.title,
+    why: r.why,
+    estimatedImpact: r.estimatedImpact as number | null,
+    difficulty: r.difficulty,
+    timeToComplete: r.timeToComplete,
+    priority: r.priority,
+  }));
+
+  if (template?.analysisConfig?.enabled) {
+    try {
+      const ai = await runAiAnalysis({
+        config: template.analysisConfig,
+        overallScore: result.overallScore,
+        readinessStatus: result.readinessStatus,
+        categories: result.categories.map((c) => ({
+          ...c,
+          description: descByKey.get(c.key) ?? null,
+        })),
+        answers: analysisAnswers,
+      });
+      summary = ai.summary;
+      analysisSections = ai.sections;
+      aiModel = ai.model;
+      for (const ca of ai.categoryAnalysis)
+        rationaleByCat.set(ca.categoryKey, ca.rationale);
+      risksToWrite = ai.risks.map((r, i) => ({
+        categoryKey: r.categoryKey,
+        title: r.title,
+        detail: r.detail,
+        severity: r.severity,
+        displayOrder: i,
+      }));
+      recsToWrite = ai.recommendations.map((r, i) => ({
+        categoryKey: r.categoryKey,
+        title: r.title,
+        why: r.why,
+        estimatedImpact: null,
+        difficulty: r.difficulty,
+        timeToComplete: r.timeToComplete,
+        priority: i + 1,
+      }));
+    } catch (err) {
+      if (!(err instanceof AiUnavailableError)) {
+        console.error("AI analysis failed, using engine fallback:", err);
+      }
+    }
+  }
 
   // Persist: replace any prior derived rows, then write the fresh results.
   await db
@@ -126,26 +226,27 @@ export async function submitAssessment(assessmentId: string) {
         categoryId: idByCategoryKey.get(c.key)!,
         score: c.score,
         status: c.status,
+        rationale: rationaleByCat.get(c.key) ?? null,
       })),
     );
   }
 
-  if (result.risks.length) {
+  if (risksToWrite.length) {
     await db.insert(schema.risks).values(
-      result.risks.map((r, i) => ({
+      risksToWrite.map((r) => ({
         assessmentId,
         categoryId: r.categoryKey ? idByCategoryKey.get(r.categoryKey) : null,
         title: r.title,
         detail: r.detail,
         severity: r.severity,
-        displayOrder: i,
+        displayOrder: r.displayOrder,
       })),
     );
   }
 
-  if (result.recommendations.length) {
+  if (recsToWrite.length) {
     await db.insert(schema.recommendations).values(
-      result.recommendations.map((r) => ({
+      recsToWrite.map((r) => ({
         assessmentId,
         categoryId: r.categoryKey ? idByCategoryKey.get(r.categoryKey) : null,
         title: r.title,
@@ -164,6 +265,10 @@ export async function submitAssessment(assessmentId: string) {
       status: "completed",
       overallScore: result.overallScore,
       readinessStatus: result.readinessStatus,
+      summary,
+      analysisSections,
+      aiModel,
+      aiGeneratedAt: summary ? new Date() : null,
       submittedAt: new Date(),
       completedAt: new Date(),
       updatedAt: new Date(),

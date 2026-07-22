@@ -39,33 +39,63 @@ async function main() {
   const t = capitalReadinessV1;
   console.log(`→ Seeding template "${t.name}"…`);
 
-  // Replace any existing default template with this slug for a clean seed.
+  // Upsert the template. If it already exists we update its metadata + AI
+  // config in place (preserving assessments that reference it), and only
+  // (re)build sections/questions when none exist yet.
   const existing = await db.query.templates.findFirst({
     where: eq(schema.templates.slug, t.slug),
   });
+
+  let templateId: string;
+  let needsSections = true;
+
   if (existing) {
-    await db.delete(schema.templates).where(eq(schema.templates.id, existing.id));
+    await db
+      .update(schema.templates)
+      .set({
+        name: t.name,
+        description: t.description,
+        estimatedMinutes: t.estimatedMinutes,
+        analysisConfig: t.analysisConfig,
+        status: "published",
+        isDefault: true,
+        updatedAt: new Date(),
+      })
+      .where(eq(schema.templates.id, existing.id));
+    templateId = existing.id;
+    const existingSections = await db.query.sections.findMany({
+      where: eq(schema.sections.templateId, existing.id),
+      columns: { id: true },
+    });
+    needsSections = existingSections.length === 0;
+    console.log(
+      needsSections
+        ? "  · updated template, building sections"
+        : "  · updated template metadata + AI config (sections preserved)",
+    );
+  } else {
+    const [tpl] = await db
+      .insert(schema.templates)
+      .values({
+        slug: t.slug,
+        name: t.name,
+        description: t.description,
+        estimatedMinutes: t.estimatedMinutes,
+        analysisConfig: t.analysisConfig,
+        status: "published",
+        isDefault: true,
+        version: 1,
+        publishedAt: new Date(),
+      })
+      .returning({ id: schema.templates.id });
+    templateId = tpl!.id;
   }
 
-  const [tpl] = await db
-    .insert(schema.templates)
-    .values({
-      slug: t.slug,
-      name: t.name,
-      description: t.description,
-      estimatedMinutes: t.estimatedMinutes,
-      status: "published",
-      isDefault: true,
-      version: 1,
-      publishedAt: new Date(),
-    })
-    .returning({ id: schema.templates.id });
-
-  for (const [sIdx, section] of t.sections.entries()) {
+  for (const [sIdx, section] of (needsSections ? t.sections : []).entries()) {
     const [sec] = await db
       .insert(schema.sections)
       .values({
-        templateId: tpl!.id,
+        templateId,
         title: section.title,
         description: section.description,
         intro: section.intro,

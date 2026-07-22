@@ -20,7 +20,7 @@ import {
 import { users } from "./users";
 import { businesses } from "./businesses";
 import { templates, questions, categories } from "./templates";
-import type { AnswerValue } from "../types";
+import type { AnswerValue, AnalysisSectionResult } from "../types";
 
 /** A single run of a template by a user for a business. */
 export const assessments = pgTable("assessments", {
@@ -39,6 +39,11 @@ export const assessments = pgTable("assessments", {
   overallScore: real("overall_score"),
   readinessStatus: readinessStatusEnum("readiness_status"),
   currentSectionOrder: integer("current_section_order").default(0),
+  // AI analysis outputs (hybrid: engine scores, AI narrates).
+  summary: text("summary"),
+  analysisSections: jsonb("analysis_sections").$type<AnalysisSectionResult[]>(),
+  aiModel: text("ai_model"),
+  aiGeneratedAt: timestamp("ai_generated_at", { withTimezone: true }),
   startedAt: timestamp("started_at", { withTimezone: true })
     .notNull()
     .defaultNow(),
@@ -84,6 +89,7 @@ export const categoryScores = pgTable("category_scores", {
     .references(() => categories.id, { onDelete: "cascade" }),
   score: real("score").notNull(),
   status: scoreStatusEnum("status").notNull(),
+  rationale: text("rationale"), // AI explanation for this category's standing
 });
 
 /** Risks surfaced by the engine for this assessment. */

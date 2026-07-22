@@ -18,6 +18,7 @@ import type {
   QuestionScoring,
   ResponseFeedback,
   CategoryThresholds,
+  AnalysisConfig,
 } from "../types";
 
 /**
@@ -46,6 +47,7 @@ export const templates = pgTable("templates", {
   version: integer("version").notNull().default(1),
   isDefault: boolean("is_default").notNull().default(false),
   estimatedMinutes: integer("estimated_minutes").default(18),
+  analysisConfig: jsonb("analysis_config").$type<AnalysisConfig>(),
   createdBy: text("created_by").references(() => users.id, {
     onDelete: "set null",
   }),

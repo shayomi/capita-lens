@@ -90,6 +90,34 @@ export const reorderSchema = z.object({
   ids: z.array(z.string().uuid()),
 });
 
+// ── AI analysis configuration ────────────────────────────────────────
+
+export const analysisRuleSchema = z.object({
+  id: z.string().min(1),
+  condition: z.string().min(1),
+  effect: z.string().min(1),
+});
+
+export const outputSectionSchema = z.object({
+  key: z
+    .string()
+    .min(1)
+    .regex(/^[a-z0-9_]+$/, "lowercase, digits, underscores"),
+  title: z.string().min(1),
+  guidance: z.string().min(1),
+});
+
+export const analysisConfigSchema = z.object({
+  enabled: z.boolean(),
+  model: z.string().min(1),
+  temperature: z.number().min(0).max(2),
+  rubric: z.string(),
+  rules: z.array(analysisRuleSchema),
+  outputSections: z.array(outputSectionSchema),
+});
+
+export type AnalysisConfigInput = z.infer<typeof analysisConfigSchema>;
+
 export type UpsertQuestionInput = z.infer<typeof upsertQuestionSchema>;
 export type UpsertSectionInput = z.infer<typeof upsertSectionSchema>;
 export type UpsertTemplateInput = z.infer<typeof upsertTemplateSchema>;

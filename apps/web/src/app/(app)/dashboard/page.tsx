@@ -6,6 +6,9 @@ import { getDashboardData } from "@/lib/queries/dashboard";
 import { EmptyAssessment } from "@/components/app/empty-assessment";
 import { CategoryGrid } from "@/components/app/category-grid";
 import { RoadmapList } from "@/components/app/roadmap-list";
+import { BusinessSnapshot } from "@/components/app/business-snapshot";
+import { AnalysisSections } from "@/components/app/analysis-sections";
+import { Sparkles } from "lucide-react";
 
 export const metadata = { title: "Dashboard" };
 
@@ -15,7 +18,7 @@ export default async function DashboardPage() {
 
   if (!data) return <EmptyAssessment />;
 
-  const { assessment, categories, risks, recommendations } = data;
+  const { assessment, snapshot, categories, risks, recommendations } = data;
   const readiness = assessment.readinessStatus ?? "developing";
   const overall = assessment.overallScore ?? 0;
   const ringStatus = overall >= 80 ? "excellent" : overall >= 65 ? "on_track" : overall >= 45 ? "attention" : "critical";
@@ -36,6 +39,20 @@ export default async function DashboardPage() {
         </div>
         <Badge variant="brand">{READINESS_LABELS[readiness]}</Badge>
       </div>
+
+      <BusinessSnapshot items={snapshot} />
+
+      {assessment.summary ? (
+        <Card className="border-brand/30 bg-brand-muted/40 p-6">
+          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand">
+            <Sparkles className="size-3.5" />
+            AI summary
+          </h2>
+          <p className="mt-2 text-[0.95rem] leading-relaxed">
+            {assessment.summary}
+          </p>
+        </Card>
+      ) : null}
 
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
         <Card className="flex flex-col items-center justify-center p-8">
@@ -98,6 +115,16 @@ export default async function DashboardPage() {
           )}
         </div>
       </div>
+
+      {assessment.analysisSections && assessment.analysisSections.length > 0 ? (
+        <div className="space-y-4">
+          <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            <Sparkles className="size-3.5 text-brand" />
+            Analysis
+          </h2>
+          <AnalysisSections sections={assessment.analysisSections} />
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -22,7 +22,13 @@ const STATUS_META: Record<string, StatusMeta> = {
 export function CategoryGrid({
   categories,
 }: {
-  categories: Array<{ key: string; label: string; score: number; status: string }>;
+  categories: Array<{
+    key: string;
+    label: string;
+    score: number;
+    status: string;
+    rationale?: string | null;
+  }>;
 }) {
   return (
     <div className="grid gap-4 sm:grid-cols-2">
@@ -44,6 +50,11 @@ export function CategoryGrid({
                 className="flex-1"
               />
             </div>
+            {c.rationale ? (
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                {c.rationale}
+              </p>
+            ) : null}
           </Card>
         );
       })}

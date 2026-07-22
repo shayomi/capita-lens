@@ -3,6 +3,7 @@ import type {
   QuestionOption,
   QuestionScoring,
   ResponseFeedback,
+  AnalysisConfig,
 } from "../types";
 import type { questionTypeEnum } from "../schema/enums";
 
@@ -34,8 +35,63 @@ export interface SeedTemplate {
   name: string;
   description: string;
   estimatedMinutes: number;
+  analysisConfig: AnalysisConfig;
   sections: SeedSection[];
 }
+
+/** Default AI analysis configuration for the Capital Readiness template. */
+const defaultAnalysisConfig: AnalysisConfig = {
+  enabled: true,
+  model: "gpt-4o",
+  temperature: 0.4,
+  rubric:
+    "You are a senior UK SME capital-readiness analyst. Assess the business exactly as a commercial lender, investor or grant panel would. Be specific, practical and honest, referencing the applicant's own answers. The deterministic engine has already scored each category — explain and build on those numbers, never contradict them.",
+  rules: [
+    {
+      id: "tax",
+      condition: "the business has outstanding tax liabilities",
+      effect:
+        "treat it as a credit risk, note lenders weigh HMRC obligations heavily, and recommend a documented HMRC time-to-pay arrangement",
+    },
+    {
+      id: "mgmt-accounts",
+      condition: "management accounts are prepared only annually or never",
+      effect:
+        "flag weak financial visibility and recommend moving to monthly management accounts",
+    },
+    {
+      id: "concentration",
+      condition: "the largest customer is more than 40% of revenue",
+      effect: "flag customer-concentration risk and recommend diversification",
+    },
+    {
+      id: "overdraft",
+      condition: "the business has exceeded its overdraft limit",
+      effect:
+        "note this as a cash-flow warning sign lenders scrutinise and recommend tighter cash-flow forecasting",
+    },
+  ],
+  outputSections: [
+    {
+      key: "executive_summary",
+      title: "Executive Summary",
+      guidance:
+        "Two or three sentences summarising overall fundability and the single biggest lever to improve it.",
+    },
+    {
+      key: "lender_perspective",
+      title: "How a Lender Sees You",
+      guidance:
+        "Explain how a commercial lender would view this business right now, referencing specific answers (credit history, cash flow, governance).",
+    },
+    {
+      key: "funding_fit",
+      title: "Funding Fit",
+      guidance:
+        "Assess suitability for the funding type and amount they selected, including whether their timing expectation is realistic.",
+    },
+  ],
+};
 
 // Reusable yes/no options.
 const yesNo: QuestionOption[] = [
@@ -64,6 +120,7 @@ export const capitalReadinessV1: SeedTemplate = {
   description:
     "Assess your business the way a lender or investor would, across financial, credit, governance, compliance and operational factors.",
   estimatedMinutes: 18,
+  analysisConfig: defaultAnalysisConfig,
   sections: [
     {
       title: "Business Profile",

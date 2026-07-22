@@ -31,6 +31,8 @@ Edit **`.env`** at the repo root (already gitignored). Both apps read from it.
 | `R2_SECRET_ACCESS_KEY` | Same token → Secret Access Key. |
 | `R2_BUCKET` | Your R2 bucket name (default `capita-lens`). |
 | `R2_PUBLIC_URL` | Optional — public bucket / custom domain base URL for served files. |
+| `OPENAI_API_KEY` | OpenAI key — powers AI assessment analysis. If unset, the deterministic engine is used as fallback. |
+| `OPENAI_MODEL` | Optional — model id (default `gpt-4o`); also overridable per template in the admin Analysis Studio. |
 
 Auth is **Neon Managed Better Auth** (`@neondatabase/auth`). Enable it in the Neon
 console's **Auth** tab and turn on **Email/Password** (and Google, optionally) as a
