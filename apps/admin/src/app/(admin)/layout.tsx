@@ -3,6 +3,9 @@ import { auth } from "@/lib/auth/server";
 import { AdminSidebar } from "@/components/admin-sidebar";
 import { AdminTopbar } from "@/components/admin-topbar";
 
+// Authed routes read the session cookie, so they must render dynamically.
+export const dynamic = "force-dynamic";
+
 export default async function AdminLayout({
   children,
 }: {

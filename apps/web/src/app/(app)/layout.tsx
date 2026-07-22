@@ -3,6 +3,9 @@ import { auth } from "@/lib/auth/server";
 import { AppSidebar } from "@/components/app/app-sidebar";
 import { AppTopbar } from "@/components/app/app-topbar";
 
+// Authed routes read the session cookie, so they must render dynamically.
+export const dynamic = "force-dynamic";
+
 export default async function AppLayout({
   children,
 }: {
