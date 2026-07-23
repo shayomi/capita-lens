@@ -1,4 +1,4 @@
-import { Users, FileStack, Inbox, CheckCircle2 } from "lucide-react";
+import { Users, FileStack, Inbox, CheckCircle2, Mails } from "lucide-react";
 import { Stat } from "@capita/ui";
 import { getOverviewStats } from "@/lib/queries";
 
@@ -16,7 +16,7 @@ export default async function OverviewPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <Stat
           label="Users"
           value={stats.users}
@@ -36,6 +36,11 @@ export default async function OverviewPage() {
           label="Completed"
           value={stats.completed}
           icon={<CheckCircle2 className="size-4" />}
+        />
+        <Stat
+          label="Waitlist"
+          value={stats.waitlist}
+          icon={<Mails className="size-4" />}
         />
       </div>
     </div>

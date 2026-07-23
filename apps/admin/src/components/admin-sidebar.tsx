@@ -8,6 +8,7 @@ import {
   Users,
   Inbox,
   SlidersHorizontal,
+  Mails,
 } from "lucide-react";
 import { Logo, cn, Badge } from "@capita/ui";
 
@@ -16,6 +17,7 @@ const NAV = [
   { label: "Templates", href: "/templates", icon: FileStack },
   { label: "Submissions", href: "/submissions", icon: Inbox },
   { label: "Users", href: "/users", icon: Users },
+  { label: "Waitlist", href: "/waitlist", icon: Mails },
   { label: "Categories", href: "/categories", icon: SlidersHorizontal },
 ];
 

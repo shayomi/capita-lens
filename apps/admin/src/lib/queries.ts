@@ -2,21 +2,24 @@ import { db, schema, count, desc, eq } from "@capita/db";
 
 /** Headline counts for the admin overview. */
 export async function getOverviewStats() {
-  const [users, templates, submissions, completed] = await Promise.all([
-    db.select({ n: count() }).from(schema.users),
-    db.select({ n: count() }).from(schema.templates),
-    db.select({ n: count() }).from(schema.assessments),
-    db
-      .select({ n: count() })
-      .from(schema.assessments)
-      .where(eq(schema.assessments.status, "completed")),
-  ]);
+  const [users, templates, submissions, completed, waitlist] =
+    await Promise.all([
+      db.select({ n: count() }).from(schema.users),
+      db.select({ n: count() }).from(schema.templates),
+      db.select({ n: count() }).from(schema.assessments),
+      db
+        .select({ n: count() })
+        .from(schema.assessments)
+        .where(eq(schema.assessments.status, "completed")),
+      db.select({ n: count() }).from(schema.waitlist),
+    ]);
 
   return {
     users: users[0]?.n ?? 0,
     templates: templates[0]?.n ?? 0,
     submissions: submissions[0]?.n ?? 0,
     completed: completed[0]?.n ?? 0,
+    waitlist: waitlist[0]?.n ?? 0,
   };
 }
 
@@ -48,6 +51,13 @@ export async function listSubmissions() {
 export async function listCategories() {
   return db.query.categories.findMany({
     orderBy: schema.categories.displayOrder,
+  });
+}
+
+export async function listWaitlist() {
+  return db.query.waitlist.findMany({
+    orderBy: desc(schema.waitlist.createdAt),
+    limit: 500,
   });
 }
 
