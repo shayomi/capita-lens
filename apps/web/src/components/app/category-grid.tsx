@@ -1,4 +1,5 @@
 import { Card, Progress, Badge } from "@capita/ui";
+import { LENDER_CONTEXT } from "@/lib/lender-context";
 
 type StatusMeta = {
   label: string;
@@ -50,8 +51,16 @@ export function CategoryGrid({
                 className="flex-1"
               />
             </div>
-            {c.rationale ? (
+            {LENDER_CONTEXT[c.key] ? (
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                <span className="font-medium text-foreground/70">
+                  Why lenders care:
+                </span>{" "}
+                {LENDER_CONTEXT[c.key]}
+              </p>
+            ) : null}
+            {c.rationale ? (
+              <p className="mt-2 border-l-2 border-brand/40 pl-3 text-xs leading-relaxed text-muted-foreground">
                 {c.rationale}
               </p>
             ) : null}

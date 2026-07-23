@@ -6,9 +6,17 @@ export interface SnapshotItem {
   value: string;
 }
 
+export interface FundingObjective {
+  type: string | null;
+  amount: string | null;
+  timing: string | null;
+  purpose: string | null;
+}
+
 export interface DashboardData {
   assessment: typeof schema.assessments.$inferSelect;
-  snapshot: SnapshotItem[];
+  business: SnapshotItem[];
+  objective: FundingObjective;
   categories: Array<{
     key: string;
     label: string;
@@ -18,25 +26,18 @@ export interface DashboardData {
   }>;
   risks: (typeof schema.risks.$inferSelect)[];
   recommendations: (typeof schema.recommendations.$inferSelect)[];
+  missingEvidence: string[];
+  potentialGain: number | null;
 }
 
-// Business Profile / Funding fields surfaced in the "Business Snapshot" panel.
-const SNAPSHOT_FIELDS: Array<{ key: string; label: string }> = [
+const BUSINESS_FIELDS: Array<{ key: string; label: string }> = [
   { key: "business_name", label: "Business" },
   { key: "legal_structure", label: "Structure" },
   { key: "years_trading", label: "Years trading" },
-  { key: "employees", label: "Employees" },
   { key: "annual_turnover", label: "Turnover" },
-  { key: "funding_type", label: "Funding sought" },
-  { key: "funding_amount", label: "Amount" },
 ];
 
-/**
- * Load the most recent completed assessment for a user, joined with its
- * category scores (+ AI rationale), risks, prioritised recommendations, and a
- * business snapshot built from the profile answers. Returns null when the user
- * hasn't finished an assessment yet.
- */
+/** Load the latest completed assessment reframed as a funding story. */
 export async function getDashboardData(
   userId: string,
 ): Promise<DashboardData | null> {
@@ -84,23 +85,56 @@ export async function getDashboardData(
     };
   });
 
-  // Build a lookup of question meta + answer by question key for the snapshot.
+  // Answer lookups keyed by question.
   const questions = sections.flatMap((s) => s.questions);
   const qByKey = new Map(questions.map((q) => [q.key, q]));
   const answerByQId = new Map<string, AnswerValue>();
   for (const a of answerRows) if (a.value) answerByQId.set(a.questionId, a.value);
 
-  const snapshot: SnapshotItem[] = [];
-  for (const field of SNAPSHOT_FIELDS) {
-    const q = qByKey.get(field.key);
-    if (!q) continue;
-    const value = answerByQId.get(q.id);
-    if (!value) continue;
-    snapshot.push({
-      label: field.label,
-      value: formatAnswer(value, q.type, q.options),
-    });
+  const readKey = (key: string): string | null => {
+    const q = qByKey.get(key);
+    if (!q) return null;
+    const v = answerByQId.get(q.id);
+    return v ? formatAnswer(v, q.type, q.options) : null;
+  };
+
+  const business: SnapshotItem[] = [];
+  for (const f of BUSINESS_FIELDS) {
+    const value = readKey(f.key);
+    if (value) business.push({ label: f.label, value });
   }
 
-  return { assessment, snapshot, categories, risks, recommendations };
+  const objective: FundingObjective = {
+    type: readKey("funding_type"),
+    amount: readKey("funding_amount"),
+    timing: readKey("funding_timing"),
+    purpose: readKey("funding_purpose"),
+  };
+
+  // Missing evidence: file/documentation questions with nothing provided.
+  const missingEvidence: string[] = [];
+  for (const q of questions) {
+    if (q.type !== "file") continue;
+    const v = answerByQId.get(q.id);
+    const provided = v?.kind === "file" && v.documentIds.length > 0;
+    if (!provided) missingEvidence.push(q.label);
+  }
+
+  // Potential readiness gain from the recommended actions (engine mode only).
+  const gain = recommendations.reduce(
+    (sum, r) => sum + (r.estimatedImpact ?? 0),
+    0,
+  );
+  const potentialGain = gain > 0 ? gain : null;
+
+  return {
+    assessment,
+    business,
+    objective,
+    categories,
+    risks,
+    recommendations,
+    missingEvidence,
+    potentialGain,
+  };
 }

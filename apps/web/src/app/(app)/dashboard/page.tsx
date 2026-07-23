@@ -1,16 +1,30 @@
+import Link from "next/link";
+import { Sparkles, RefreshCw, TrendingUp } from "lucide-react";
 import { requireUser, type AppUser } from "@capita/auth";
 import { READINESS_LABELS } from "@capita/core";
-import { ScoreRing, Card, Badge } from "@capita/ui";
+import { ScoreRing, Card, Badge, Button } from "@capita/ui";
 import { auth } from "@/lib/auth/server";
 import { getDashboardData } from "@/lib/queries/dashboard";
 import { EmptyAssessment } from "@/components/app/empty-assessment";
 import { CategoryGrid } from "@/components/app/category-grid";
 import { RoadmapList } from "@/components/app/roadmap-list";
-import { BusinessSnapshot } from "@/components/app/business-snapshot";
+import { FundingObjectiveBanner } from "@/components/app/funding-objective";
+import { MissingEvidence } from "@/components/app/missing-evidence";
 import { AnalysisSections } from "@/components/app/analysis-sections";
-import { Sparkles } from "lucide-react";
 
 export const metadata = { title: "Dashboard" };
+
+/** Numbered step heading that gives the dashboard its funding-story rhythm. */
+function Step({ n, title }: { n: string; title: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="tabular flex size-7 items-center justify-center rounded-full bg-secondary font-mono text-xs font-semibold text-muted-foreground">
+        {n}
+      </span>
+      <h2 className="font-display text-lg font-semibold">{title}</h2>
+    </div>
+  );
+}
 
 export default async function DashboardPage() {
   const user: AppUser = await requireUser(auth);
@@ -18,17 +32,34 @@ export default async function DashboardPage() {
 
   if (!data) return <EmptyAssessment />;
 
-  const { assessment, snapshot, categories, risks, recommendations } = data;
+  const {
+    assessment,
+    objective,
+    categories,
+    risks,
+    recommendations,
+    missingEvidence,
+    potentialGain,
+  } = data;
+
   const readiness = assessment.readinessStatus ?? "developing";
   const overall = assessment.overallScore ?? 0;
-  const ringStatus = overall >= 80 ? "excellent" : overall >= 65 ? "on_track" : overall >= 45 ? "attention" : "critical";
+  const ringStatus =
+    overall >= 80
+      ? "excellent"
+      : overall >= 65
+        ? "on_track"
+        : overall >= 45
+          ? "attention"
+          : "critical";
 
   return (
-    <div className="mx-auto max-w-6xl space-y-6">
-      <div className="flex items-end justify-between">
+    <div className="mx-auto max-w-6xl space-y-10">
+      {/* Header */}
+      <div className="flex items-end justify-between gap-4">
         <div>
           <h1 className="font-display text-2xl font-semibold">
-            Capital Readiness
+            Your funding readiness
           </h1>
           <p className="text-sm text-muted-foreground">
             Last assessed{" "}
@@ -37,60 +68,71 @@ export default async function DashboardPage() {
               : "recently"}
           </p>
         </div>
-        <Badge variant="brand">{READINESS_LABELS[readiness]}</Badge>
+        <Button asChild variant="outline">
+          <Link href="/assessment">
+            <RefreshCw className="size-4" />
+            Reassess
+          </Link>
+        </Button>
       </div>
 
-      <BusinessSnapshot items={snapshot} />
+      {/* 01 · Your goal */}
+      <FundingObjectiveBanner objective={objective} />
 
-      {assessment.summary ? (
-        <Card className="border-brand/30 bg-brand-muted/40 p-6">
-          <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand">
-            <Sparkles className="size-3.5" />
-            AI summary
-          </h2>
-          <p className="mt-2 text-[0.95rem] leading-relaxed">
-            {assessment.summary}
-          </p>
-        </Card>
-      ) : null}
+      {/* 02 · How ready you are */}
+      <section className="space-y-4">
+        <Step n="01" title="How ready you are" />
+        <div className="grid gap-6 lg:grid-cols-[300px_1fr]">
+          <Card className="flex flex-col items-center justify-center p-8">
+            <ScoreRing
+              value={overall}
+              status={ringStatus}
+              label="Readiness"
+              size={200}
+            />
+            <Badge variant="brand" className="mt-4">
+              {READINESS_LABELS[readiness]}
+            </Badge>
+          </Card>
 
-      <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-        <Card className="flex flex-col items-center justify-center p-8">
-          <ScoreRing value={overall} status={ringStatus} label="Overall" size={220} />
-          <p className="mt-4 text-center text-sm text-muted-foreground">
-            {READINESS_LABELS[readiness]} · {Math.round(overall)}/100 capital
-            readiness
-          </p>
-        </Card>
-
-        <div className="space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            Category scores
-          </h2>
-          <CategoryGrid categories={categories} />
+          <Card className="flex flex-col justify-center p-6">
+            {assessment.summary ? (
+              <>
+                <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand">
+                  <Sparkles className="size-3.5" />
+                  What this means
+                </h3>
+                <p className="mt-2 text-[0.95rem] leading-relaxed">
+                  {assessment.summary}
+                </p>
+              </>
+            ) : (
+              <p className="text-[0.95rem] leading-relaxed text-muted-foreground">
+                You scored {Math.round(overall)}/100. A lender would currently
+                view you as{" "}
+                <span className="font-medium text-foreground">
+                  {READINESS_LABELS[readiness].toLowerCase()}
+                </span>
+                . Work the steps below to strengthen your position.
+              </p>
+            )}
+          </Card>
         </div>
-      </div>
+      </section>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            Improvement roadmap
-          </h2>
-          <RoadmapList recommendations={recommendations} />
-        </div>
-        <div className="space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            Biggest risks
-          </h2>
+      {/* 02 · Blockers + 03 · Missing evidence */}
+      <div className="grid gap-8 lg:grid-cols-2">
+        <section className="space-y-4">
+          <Step n="02" title="Your biggest blockers" />
           {risks.length === 0 ? (
             <Card className="p-6 text-sm text-muted-foreground">
-              No material risks detected.
+              No material blockers detected. You&apos;re in strong shape.
             </Card>
           ) : (
             <div className="space-y-3">
               {risks.map((r) => (
                 <Card key={r.id} className="p-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-3">
                     <p className="text-sm font-medium">{r.title}</p>
                     <Badge
                       variant={
@@ -113,17 +155,50 @@ export default async function DashboardPage() {
               ))}
             </div>
           )}
-        </div>
+        </section>
+
+        <section className="space-y-4">
+          <Step n="03" title="What evidence is missing" />
+          <MissingEvidence items={missingEvidence} />
+        </section>
       </div>
 
+      {/* 04 · What to fix next */}
+      <section className="space-y-4">
+        <div className="flex items-center justify-between gap-4">
+          <Step n="04" title="What to fix next" />
+          {potentialGain ? (
+            <span className="flex items-center gap-1.5 text-sm font-medium text-success">
+              <TrendingUp className="size-4" />+{potentialGain} readiness
+              available
+            </span>
+          ) : null}
+        </div>
+        <RoadmapList recommendations={recommendations} />
+      </section>
+
+      {/* Lender's-lens category breakdown */}
+      <section className="space-y-4">
+        <div>
+          <h2 className="font-display text-lg font-semibold">
+            Seen through a lender&apos;s lens
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            How each area stacks up, and why it matters to a funder.
+          </p>
+        </div>
+        <CategoryGrid categories={categories} />
+      </section>
+
+      {/* AI narrative sections */}
       {assessment.analysisSections && assessment.analysisSections.length > 0 ? (
-        <div className="space-y-4">
-          <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            <Sparkles className="size-3.5 text-brand" />
-            Analysis
+        <section className="space-y-4">
+          <h2 className="flex items-center gap-2 font-display text-lg font-semibold">
+            <Sparkles className="size-4 text-brand" />
+            Deeper analysis
           </h2>
           <AnalysisSections sections={assessment.analysisSections} />
-        </div>
+        </section>
       ) : null}
     </div>
   );
