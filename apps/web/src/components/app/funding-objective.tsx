@@ -2,7 +2,7 @@ import { Target } from "lucide-react";
 import { Card } from "@capita/ui";
 import type { FundingObjective } from "@/lib/queries/dashboard";
 
-/** "What you're pursuing" banner — frames the whole dashboard around the goal. */
+/** "What you're pursuing" banner that frames the dashboard around the goal. */
 export function FundingObjectiveBanner({
   objective,
 }: {
