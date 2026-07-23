@@ -14,18 +14,18 @@ export function SiteFooter() {
         </div>
         <div className="grid grid-cols-2 gap-10 text-sm sm:grid-cols-3">
           <FooterCol
-            title="Product"
+            title="Learn"
             links={[
-              ["How it works", "#how"],
-              ["Readiness", "#readiness"],
-              ["Pricing", "#pricing"],
+              ["Why applications fail", "#problem"],
+              ["Capital readiness", "#readiness"],
+              ["How lenders assess", "#lenders"],
             ]}
           />
           <FooterCol
-            title="Company"
+            title="Get started"
             links={[
-              ["About", "#"],
-              ["Contact", "#"],
+              ["Start free assessment", "/auth/sign-up"],
+              ["Join the waitlist", "#waitlist"],
             ]}
           />
           <FooterCol

@@ -15,6 +15,13 @@
       "when": 1784727665790,
       "tag": "0001_eager_agent_brand",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1784802252066,
+      "tag": "0002_lovely_supreme_intelligence",
+      "breakpoints": true
     }
   ]
 }

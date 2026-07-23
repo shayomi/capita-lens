@@ -7,3 +7,4 @@ export * from "./assessments";
 export * from "./documents";
 export * from "./activity";
 export * from "./subscriptions";
+export * from "./waitlist";
