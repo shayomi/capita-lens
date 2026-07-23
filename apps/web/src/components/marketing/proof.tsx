@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import {
   Target,
   Gauge,
+  FileCheck2,
   AlertTriangle,
-  Wrench,
+  ListChecks,
   ArrowUpRight,
   Check,
   X,
@@ -16,11 +17,12 @@ import { Reveal, StaggerGroup, staggerItem } from "./motion";
 // ── Dashboard as proof: the funding story ────────────────────────────
 
 const STORY = [
-  { icon: Target, label: "Your goal", value: "£150k working capital", tone: "#6366f1" },
-  { icon: Gauge, label: "How ready you are", value: "Developing", tone: "#0ea5e9" },
-  { icon: AlertTriangle, label: "Your biggest blocker", value: "Thin financial evidence", tone: "#f59e0b" },
-  { icon: Wrench, label: "What to fix next", value: "Add 3 months of management accounts", tone: "#14b8a6" },
-  { icon: ArrowUpRight, label: "Readiness you'd gain", value: "A materially stronger application", tone: "#10b981" },
+  { icon: Target, label: "Funding goal", value: "£150k working capital", tone: "#6366f1" },
+  { icon: Gauge, label: "Current readiness", value: "Developing", tone: "#0ea5e9" },
+  { icon: FileCheck2, label: "Evidence strength", value: "Moderate, with missing management accounts", tone: "#14b8a6" },
+  { icon: AlertTriangle, label: "Highest priority gap", value: "Thin financial evidence", tone: "#f59e0b" },
+  { icon: ListChecks, label: "Recommended actions", value: "Add 3 months of management accounts", tone: "#8b5cf6" },
+  { icon: ArrowUpRight, label: "Projected readiness confidence", value: "A materially stronger application", tone: "#10b981" },
 ];
 
 export function DashboardProof() {
@@ -36,7 +38,7 @@ export function DashboardProof() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Not a wall of scores. A clear line from where you are today to
-            funding-ready, with the next step always obvious.
+            stronger funding readiness, with the next step always clear.
           </p>
         </Reveal>
 
@@ -102,7 +104,8 @@ export function Differentiation() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Other tools show you one slice. Capita-Lens measures your overall
-            funding readiness, continuously, through a lender&apos;s lens.
+            funding readiness continuously, using financial, operational,
+            governance, documentation and behavioural signals together.
           </p>
         </Reveal>
 
@@ -126,8 +129,8 @@ export function Differentiation() {
               <Check className="size-5 shrink-0 text-brand" />
               <span className="font-semibold">Capita-Lens</span>
               <span className="ml-auto text-right text-sm">
-                Continuously measures your overall funding readiness and shows
-                you how to improve it.
+                Helps assess overall funding readiness and provides tailored
+                guidance on how to improve it.
               </span>
             </div>
           </Reveal>

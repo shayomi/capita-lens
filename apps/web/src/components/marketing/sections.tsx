@@ -47,8 +47,8 @@ const PROBLEMS = [
   {
     icon: Search,
     color: "#f43f5e",
-    title: "You can't see what a lender sees",
-    body: "Owners apply hoping for the best, with no view of how a lender will actually judge the business.",
+    title: "You can't see each lender's criteria",
+    body: "Owners apply hoping for the best, with limited visibility into the factors a funding provider may consider.",
   },
   {
     icon: Layers,
@@ -66,7 +66,7 @@ const PROBLEMS = [
     icon: RefreshCw,
     color: "#0ea5e9",
     title: "Readiness isn't a one-off",
-    body: "Your fundability shifts every month. Preparing once, right before you apply, simply isn't enough.",
+    body: "Your readiness can shift over time. Preparing once, right before you apply, simply isn't enough.",
   },
 ];
 
@@ -87,7 +87,7 @@ export function ProblemSection() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             It&apos;s rarely the reason business owners expect. Lenders decline
-            healthy-looking businesses every day, because fundability is about
+            healthy-looking businesses, because funding readiness is about
             far more than profit and a credit score.
           </p>
         </Reveal>
@@ -119,19 +119,19 @@ const CONCEPTS = [
     icon: FileCheck2,
     color: "#10b981",
     title: "Evidence-led assessment",
-    body: "Every judgement is backed by the documents and answers a lender would actually ask for.",
+    body: "Each assessment is backed by documents and answers linked to commonly reviewed funding factors.",
   },
   {
     icon: Brain,
     color: "#6366f1",
     title: "Decision Intelligence",
-    body: "A framework that weighs dozens of signals together, the way a credit committee does.",
+    body: "Unlike traditional financial tools that monitor isolated metrics, Capita-Lens combines financial, operational, governance, documentation and behavioural signals into a single capital readiness assessment.",
   },
   {
     icon: ShieldCheck,
     color: "#0ea5e9",
     title: "Continuous self-due diligence",
-    body: "Assess yourself before a lender does, and keep improving between applications.",
+    body: "Assess commonly reviewed areas before you apply, and keep improving between applications.",
   },
 ];
 
@@ -148,9 +148,9 @@ export function CapitalReadinessSection() {
           </h2>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
             Capital readiness is how prepared your business is to secure external
-            funding, measured the way a lender would. It goes beyond credit to
-            the full picture: your financials, evidence, governance and
-            resilience.
+            funding, measured against factors many finance providers commonly
+            consider. It goes beyond credit to the full picture: your financials,
+            evidence, governance and resilience.
           </p>
         </Reveal>
 
@@ -172,16 +172,16 @@ export function CapitalReadinessSection() {
   );
 }
 
-// ── 3. How lenders actually assess you ───────────────────────────────
+// ── 3. How lenders commonly assess you ───────────────────────────────
 
 const LENDER_AREAS = [
-  { icon: Wallet, color: "#10b981", label: "Financial Health", ask: "Can the business generate and hold cash?" },
-  { icon: Scale, color: "#0ea5e9", label: "Credit & Risk", ask: "What does the track record say about repayment?" },
-  { icon: TrendingUp, color: "#14b8a6", label: "Affordability", ask: "Can it service new debt on top of what it owes?" },
-  { icon: Building2, color: "#6366f1", label: "Governance", ask: "Is ownership clear and oversight sound?" },
-  { icon: ShieldCheck, color: "#8b5cf6", label: "Compliance", ask: "Are filings, tax and policies in order?" },
-  { icon: Landmark, color: "#f59e0b", label: "Operational Readiness", ask: "How resilient is it to shocks and dependencies?" },
-  { icon: FileCheck2, color: "#f43f5e", label: "Documentation", ask: "Is the evidence there to prove it all?" },
+  { icon: Wallet, color: "#10b981", label: "Financial Health", ask: "The business's ability to generate and retain cash." },
+  { icon: Scale, color: "#0ea5e9", label: "Credit & Risk", ask: "Repayment history, adverse events and overall risk profile." },
+  { icon: TrendingUp, color: "#14b8a6", label: "Affordability", ask: "The ability to service new debt alongside existing obligations." },
+  { icon: Building2, color: "#6366f1", label: "Governance", ask: "Ownership clarity, oversight, controls and decision-making discipline." },
+  { icon: ShieldCheck, color: "#8b5cf6", label: "Compliance", ask: "Filings, tax position, policies and regulatory standing." },
+  { icon: Landmark, color: "#f59e0b", label: "Operational Readiness", ask: "Resilience to shocks, dependencies and delivery risks." },
+  { icon: FileCheck2, color: "#f43f5e", label: "Documentation", ask: "The strength and completeness of supporting evidence." },
 ];
 
 export function LenderViewSection() {
@@ -197,11 +197,12 @@ export function LenderViewSection() {
             The lender&apos;s lens
           </Badge>
           <h2 className="text-balance font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            How lenders actually assess you
+            How lenders commonly assess you
           </h2>
           <p className="mt-4 text-muted-foreground">
-            We mirror the real assessment. For every area you learn what lenders
-            look for, where your evidence is thin, and what to do next.
+            Our framework is designed to reflect the types of factors commonly
+            considered by lenders, investors and finance providers when assessing
+            funding applications.
           </p>
         </Reveal>
 
@@ -217,7 +218,7 @@ export function LenderViewSection() {
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground">
                   <span className="font-medium text-foreground/80">
-                    Lenders ask:
+                    Lenders commonly consider:
                   </span>{" "}
                   {ask}
                 </p>
@@ -234,8 +235,8 @@ export function LenderViewSection() {
 
 const STEPS = [
   { icon: Target, color: "#6366f1", n: "01", title: "Set your funding goal", body: "Tell us what you're raising and why. Every assessment is framed around that objective." },
-  { icon: ClipboardCheck, color: "#0ea5e9", n: "02", title: "Complete the guided assessment", body: "A conversational review that teaches you how lenders think as you answer." },
-  { icon: Gauge, color: "#14b8a6", n: "03", title: "Get your Capital Readiness Profile", body: "See exactly where you stand, what's blocking funding and what evidence is missing." },
+  { icon: ClipboardCheck, color: "#0ea5e9", n: "02", title: "Complete the guided assessment", body: "A conversational review that helps you understand the factors finance providers commonly consider." },
+  { icon: Gauge, color: "#14b8a6", n: "03", title: "Get your Capital Readiness Profile", body: "See where you stand, which gaps may weaken an application, and what evidence is missing." },
   { icon: ListChecks, color: "#10b981", n: "04", title: "Work the roadmap", body: "Fix the highest-impact gaps first and watch your readiness climb, month after month." },
 ];
 

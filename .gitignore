@@ -17,3 +17,6 @@ out
 .DS_Store
 *.log
 coverage
+
+# ts build info
+*.tsbuildinfo

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s · Capita-Lens",
   },
   description:
-    "Assess your business the way a lender or investor would. Understand your capital readiness, close evidence gaps and approach funding with confidence.",
+    "Assess your business against factors commonly considered by lenders and investors. Understand your capital readiness, close evidence gaps and approach funding with confidence.",
 };
 
 export default function RootLayout({

@@ -31,9 +31,9 @@ export function Hero() {
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
               Most funding applications fail for reasons owners never saw
-              coming. Capita-Lens assesses your business across everything
-              lenders, investors and grant providers actually look at, then
-              shows you exactly how to become funding-ready.
+              coming. Capita-Lens assesses your business across key areas
+              lenders, investors and grant providers commonly consider, then
+              provides practical recommendations to help you become funding-ready.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -47,8 +47,7 @@ export function Hero() {
               </Button>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">
-              No credit check. No obligation. Just an honest read on how fundable
-              you really are.
+              Assess. Improve. Approach funding with greater confidence.
             </p>
           </motion.div>
         </div>

@@ -6,7 +6,7 @@ import { Card } from "@capita/ui";
 /**
  * Calm hero visual: the business seen "through a lender's eyes". Deliberately
  * qualitative, not a wall of numbers: a single readiness read plus the
- * questions a lender is actually asking.
+ * types of questions lenders commonly consider.
  */
 const LENDER_QUESTIONS = [
   { q: "Can they afford to repay new debt?", verdict: "Likely", tone: "ok" },
@@ -38,7 +38,7 @@ export function LenderLens() {
 
       <div className="space-y-1 p-5">
         <p className="mb-3 text-sm text-muted-foreground">
-          Before they lend a penny, this is what they&apos;re really asking:
+          These are the types of questions lenders commonly consider:
         </p>
         {LENDER_QUESTIONS.map((item, i) => {
           const tone = TONE[item.tone]!;
@@ -63,9 +63,9 @@ export function LenderLens() {
 
       <div className="border-t border-border/60 bg-brand-muted/40 px-5 py-4">
         <p className="text-sm">
-          <span className="font-semibold text-brand">Capita-Lens</span> answers
-          every one of these for you, and shows you how to turn a{" "}
-          <span className="font-medium">no</span> into a{" "}
+          <span className="font-semibold text-brand">Capita-Lens</span> helps
+          you prepare against these commonly assessed areas, and shows you how
+          to potentially turn a <span className="font-medium">no</span> into a{" "}
           <span className="font-medium">yes</span>.
         </p>
       </div>

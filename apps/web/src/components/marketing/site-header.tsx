@@ -9,7 +9,7 @@ import { DEMO_URL } from "@/lib/marketing";
 const NAV = [
   { label: "The problem", href: "#problem" },
   { label: "Capital readiness", href: "#readiness" },
-  { label: "How lenders assess", href: "#lenders" },
+  { label: "Common lender factors", href: "#lenders" },
   { label: "Why we're different", href: "#difference" },
 ];
 
