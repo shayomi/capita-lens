@@ -19,3 +19,10 @@ export { Skeleton } from "./components/skeleton";
 export { ScoreRing, type ScoreRingProps } from "./components/score-ring";
 export { Stat, type StatProps } from "./components/stat";
 export { Logo, type LogoProps } from "./components/logo";
+export {
+  TrendChart,
+  BarBreakdown,
+  type TrendPoint,
+  type BreakdownDatum,
+  type ChartColor,
+} from "./components/charts";

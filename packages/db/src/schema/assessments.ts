@@ -156,6 +156,42 @@ export const answersRelations = relations(answers, ({ one }) => ({
   }),
 }));
 
+export const categoryScoresRelations = relations(categoryScores, ({ one }) => ({
+  assessment: one(assessments, {
+    fields: [categoryScores.assessmentId],
+    references: [assessments.id],
+  }),
+  category: one(categories, {
+    fields: [categoryScores.categoryId],
+    references: [categories.id],
+  }),
+}));
+
+export const risksRelations = relations(risks, ({ one }) => ({
+  assessment: one(assessments, {
+    fields: [risks.assessmentId],
+    references: [assessments.id],
+  }),
+  category: one(categories, {
+    fields: [risks.categoryId],
+    references: [categories.id],
+  }),
+}));
+
+export const recommendationsRelations = relations(
+  recommendations,
+  ({ one }) => ({
+    assessment: one(assessments, {
+      fields: [recommendations.assessmentId],
+      references: [assessments.id],
+    }),
+    category: one(categories, {
+      fields: [recommendations.categoryId],
+      references: [categories.id],
+    }),
+  }),
+);
+
 export type Assessment = typeof assessments.$inferSelect;
 export type Answer = typeof answers.$inferSelect;
 export type CategoryScore = typeof categoryScores.$inferSelect;

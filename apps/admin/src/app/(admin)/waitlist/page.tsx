@@ -17,7 +17,7 @@ export default async function WaitlistPage() {
   }));
 
   return (
-    <div className="mx-auto max-w-6xl space-y-6">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display text-2xl font-semibold">Waitlist</h1>
