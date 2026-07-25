@@ -14,7 +14,7 @@ export default async function UsersPage() {
   const users = await listUsers();
 
   return (
-    <div className="mx-auto max-w-6xl space-y-6">
+    <div className="space-y-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Users</h1>
         <p className="text-sm text-muted-foreground">
