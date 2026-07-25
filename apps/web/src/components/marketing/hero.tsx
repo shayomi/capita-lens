@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 import { Button, Badge } from "@capita/ui";
 import { LenderLens } from "./lender-lens";
+import { WaitlistForm } from "./waitlist-form";
 import { DEMO_URL } from "@/lib/marketing";
 
 export function Hero() {
@@ -35,20 +35,18 @@ export function Hero() {
               lenders, investors and grant providers commonly consider, then
               provides practical recommendations to help you become funding-ready.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href="/auth/sign-up">
-                  Start free assessment
-                  <ArrowRight className="size-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={DEMO_URL}>Book a demo</a>
-              </Button>
+            <div className="mt-8 max-w-md">
+              <WaitlistForm source="landing_hero" />
+              <div className="mt-3 flex items-center gap-3 text-sm text-muted-foreground">
+                <span>Be first to get access.</span>
+                <a
+                  href={DEMO_URL}
+                  className="font-medium text-foreground underline-offset-4 hover:underline"
+                >
+                  Book a demo
+                </a>
+              </div>
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Assess. Improve. Approach funding with greater confidence.
-            </p>
           </motion.div>
         </div>
 

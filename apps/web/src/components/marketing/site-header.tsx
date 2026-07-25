@@ -43,7 +43,7 @@ export function SiteHeader() {
             <a href={DEMO_URL}>Book a demo</a>
           </Button>
           <Button asChild size="sm">
-            <Link href="/auth/sign-up">Start free assessment</Link>
+            <a href="#waitlist">Join waitlist</a>
           </Button>
         </div>
 
@@ -81,7 +81,9 @@ export function SiteHeader() {
               <a href={DEMO_URL}>Book a demo</a>
             </Button>
             <Button asChild size="sm">
-              <Link href="/auth/sign-up">Start free assessment</Link>
+              <a href="#waitlist" onClick={() => setOpen(false)}>
+                Join waitlist
+              </a>
             </Button>
           </div>
         </div>

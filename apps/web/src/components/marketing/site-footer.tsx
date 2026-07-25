@@ -24,8 +24,8 @@ export function SiteFooter() {
           <FooterCol
             title="Get started"
             links={[
-              ["Start free assessment", "/auth/sign-up"],
               ["Join the waitlist", "#waitlist"],
+              ["Sign in", "/auth/sign-in"],
             ]}
           />
           <FooterCol
