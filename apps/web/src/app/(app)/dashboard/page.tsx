@@ -54,7 +54,7 @@ export default async function DashboardPage() {
           : "critical";
 
   return (
-    <div className="mx-auto max-w-6xl space-y-10">
+    <div className="w-full space-y-10">
       {/* Header */}
       <div className="flex items-end justify-between gap-4">
         <div>
