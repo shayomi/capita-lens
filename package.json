@@ -1,5 +1,5 @@
 {
-  "name": "capita-lens",
+  "name": "sadora-lens",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.15.4",
@@ -11,11 +11,11 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "db:generate": "pnpm --filter @capita/db generate",
-    "db:migrate": "pnpm --filter @capita/db migrate",
-    "db:push": "pnpm --filter @capita/db push",
-    "db:seed": "pnpm --filter @capita/db seed",
-    "db:studio": "pnpm --filter @capita/db studio",
+    "db:generate": "pnpm --filter @sadora/db generate",
+    "db:migrate": "pnpm --filter @sadora/db migrate",
+    "db:push": "pnpm --filter @sadora/db push",
+    "db:seed": "pnpm --filter @sadora/db seed",
+    "db:studio": "pnpm --filter @sadora/db studio",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

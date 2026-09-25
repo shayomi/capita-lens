@@ -1,14 +1,14 @@
 import { AuthView } from "@neondatabase/auth-ui";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, LockKeyhole, ShieldCheck } from "lucide-react";
-import { Badge, Logo } from "@capita/ui";
+import { Badge, Logo } from "@sadora/ui";
 
 export const dynamicParams = false;
 
 const AUTH_COPY = {
   "sign-in": {
     badge: "Admin access",
-    title: "Sign in to manage Capita-Lens operations.",
+    title: "Sign in to manage Sadora-Lens operations.",
     body: "Review submissions, templates, users, and readiness data from the admin console.",
   },
   "sign-up": {
@@ -20,7 +20,7 @@ const AUTH_COPY = {
 
 const DEFAULT_COPY = {
   badge: "Secure admin",
-  title: "Continue to the Capita-Lens admin console.",
+  title: "Continue to the Sadora-Lens admin console.",
   body: "Use your authorised account to access operational controls and platform records.",
 };
 

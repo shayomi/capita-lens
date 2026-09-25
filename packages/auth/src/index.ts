@@ -1,5 +1,5 @@
 export * from "./roles";
-export { createAuth, type CapitaAuth } from "./neon";
+export { createAuth, type SadoraAuth } from "./neon";
 export {
   syncUser,
   getAppUserById,

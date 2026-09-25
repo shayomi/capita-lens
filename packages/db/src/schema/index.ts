@@ -1,4 +1,4 @@
-// Barrel for the full Drizzle schema. Import from "@capita/db/schema".
+// Barrel for the full Drizzle schema. Import from "@sadora/db/schema".
 export * from "./enums";
 export * from "./users";
 export * from "./businesses";

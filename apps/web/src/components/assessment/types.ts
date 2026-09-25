@@ -3,7 +3,7 @@ import type {
   ConditionalLogic,
   QuestionOption,
   ResponseFeedback,
-} from "@capita/db";
+} from "@sadora/db";
 
 export type { AnswerValue };
 

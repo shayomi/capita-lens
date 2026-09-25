@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo } from "@capita/ui";
+import { Logo } from "@sadora/ui";
 
 export function SiteFooter() {
   return (
@@ -39,9 +39,9 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border/60">
         <div className="container flex flex-col gap-2 py-6 text-xs text-muted-foreground lg:flex-row lg:justify-between">
-          <span>© {new Date().getFullYear()} Capita-Lens. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Sadora-Lens. All rights reserved.</span>
           <span className="max-w-3xl">
-            Capita-Lens helps businesses improve their funding readiness but
+            Sadora-Lens helps businesses improve their funding readiness but
             does not guarantee funding approval. Lending and investment decisions
             remain solely at the discretion of the relevant funding provider.
           </span>

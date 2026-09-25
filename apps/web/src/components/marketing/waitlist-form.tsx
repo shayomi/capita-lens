@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
-import { Button, Input, cn } from "@capita/ui";
+import { Button, Input, cn } from "@sadora/ui";
 import { joinWaitlist } from "@/app/(marketing)/actions";
 
 interface Props {

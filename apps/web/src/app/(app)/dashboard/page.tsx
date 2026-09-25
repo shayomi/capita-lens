@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Sparkles, RefreshCw, TrendingUp } from "lucide-react";
-import { requireUser, type AppUser } from "@capita/auth";
-import { READINESS_LABELS } from "@capita/core";
-import { ScoreRing, Card, Badge, Button } from "@capita/ui";
+import { requireUser, type AppUser } from "@sadora/auth";
+import { READINESS_LABELS } from "@sadora/core";
+import { ScoreRing, Card, Badge, Button } from "@sadora/ui";
 import { auth } from "@/lib/auth/server";
 import { getDashboardData } from "@/lib/queries/dashboard";
 import { EmptyAssessment } from "@/components/app/empty-assessment";

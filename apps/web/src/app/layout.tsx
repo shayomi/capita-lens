@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { fontVariables } from "@capita/ui/fonts";
+import { fontVariables } from "@sadora/ui/fonts";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Capita-Lens · Capital Readiness for UK SMEs",
-    template: "%s · Capita-Lens",
+    default: "Sadora-Lens · Capital Readiness for UK SMEs",
+    template: "%s · Sadora-Lens",
   },
   description:
     "Assess your business against factors commonly considered by lenders and investors. Understand your capital readiness, close evidence gaps and approach funding with confidence.",

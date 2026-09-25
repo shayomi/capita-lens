@@ -1,5 +1,5 @@
 /**
- * Shared jsonb column types. Kept here (not in @capita/core) so the schema
+ * Shared jsonb column types. Kept here (not in @sadora/core) so the schema
  * package stays dependency-free, and re-exported by core for app use.
  */
 

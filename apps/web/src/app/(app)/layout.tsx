@@ -1,4 +1,4 @@
-import { requireUser } from "@capita/auth";
+import { requireUser } from "@sadora/auth";
 import { auth } from "@/lib/auth/server";
 import { AppSidebar } from "@/components/app/app-sidebar";
 import { AppTopbar } from "@/components/app/app-topbar";

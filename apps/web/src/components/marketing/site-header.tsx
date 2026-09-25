@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Logo, Button, cn } from "@capita/ui";
+import { Logo, Button, cn } from "@sadora/ui";
 import { DEMO_URL } from "@/lib/marketing";
 
 const NAV = [

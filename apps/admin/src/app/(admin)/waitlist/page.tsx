@@ -1,4 +1,4 @@
-import { Badge } from "@capita/ui";
+import { Badge } from "@sadora/ui";
 import { listWaitlist } from "@/lib/queries";
 import { Table, THead, TH, TRow, TD, EmptyRow } from "@/components/data-table";
 import { ExportCsv } from "@/components/export-csv";
@@ -36,7 +36,7 @@ export default async function WaitlistPage() {
               { key: "source", label: "Source" },
               { key: "createdAt", label: "Signed up" },
             ]}
-            filename="capita-lens-waitlist.csv"
+            filename="sadora-lens-waitlist.csv"
           />
         </div>
       </div>

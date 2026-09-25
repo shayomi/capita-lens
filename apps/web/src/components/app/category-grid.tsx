@@ -1,4 +1,4 @@
-import { Card, Progress, Badge } from "@capita/ui";
+import { Card, Progress, Badge } from "@sadora/ui";
 import { LENDER_CONTEXT } from "@/lib/lender-context";
 
 type StatusMeta = {

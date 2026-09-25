@@ -1,5 +1,5 @@
-import { Card, Badge } from "@capita/ui";
-import type { schema } from "@capita/db";
+import { Card, Badge } from "@sadora/ui";
+import type { schema } from "@sadora/db";
 
 const DIFF_VARIANT = {
   easy: "success",

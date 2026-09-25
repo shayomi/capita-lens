@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { db, schema } from "@capita/db";
+import { db, schema } from "@sadora/db";
 
 const schemaInput = z.object({
   email: z.string().email(),

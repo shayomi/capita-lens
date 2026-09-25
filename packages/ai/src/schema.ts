@@ -1,4 +1,4 @@
-import type { AnalysisConfig } from "@capita/db";
+import type { AnalysisConfig } from "@sadora/db";
 
 /**
  * Build a strict JSON Schema for OpenAI structured outputs from the admin's

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Loader2, CheckCircle2 } from "lucide-react";
-import { Logo } from "@capita/ui";
+import { Logo } from "@sadora/ui";
 
 const STEPS = [
   "Financial Health",

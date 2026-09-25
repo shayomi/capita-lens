@@ -7,7 +7,7 @@ export interface LogoProps {
   withWordmark?: boolean;
 }
 
-/** Capita-Lens mark: a lens aperture over a rising bar — readiness in focus. */
+/** Sadora-Lens mark: a lens aperture over a rising bar — readiness in focus. */
 export function Logo({ className, withWordmark = true }: LogoProps) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
@@ -36,7 +36,7 @@ export function Logo({ className, withWordmark = true }: LogoProps) {
       </svg>
       {withWordmark ? (
         <span className="font-display text-[15px] font-semibold tracking-tight">
-          Capita<span className="text-brand">Lens</span>
+          Sadora<span className="text-brand">Lens</span>
         </span>
       ) : null}
     </span>

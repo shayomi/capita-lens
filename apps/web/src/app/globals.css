@@ -1,7 +1,7 @@
 /* Neon Auth UI compiled component styles (self-contained Tailwind build). */
 @import "@neondatabase/auth-ui/css";
 /* Our design system (tokens + Tailwind base/components/utilities). */
-@import "@capita/ui/styles.css";
+@import "@sadora/ui/styles.css";
 
 /*
  * Bridge our design tokens into Neon Auth UI. The library reads `var(--popover)`

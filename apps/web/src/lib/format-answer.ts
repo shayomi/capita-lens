@@ -1,4 +1,4 @@
-import type { AnswerValue, QuestionOption } from "@capita/db";
+import type { AnswerValue, QuestionOption } from "@sadora/db";
 
 /** Render a stored answer as human-readable text for the AI prompt / snapshot. */
 export function formatAnswer(

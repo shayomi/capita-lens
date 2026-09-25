@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
-import { Button, Badge } from "@capita/ui";
+import { Button, Badge } from "@sadora/ui";
 import { LenderLens } from "./lender-lens";
 import { WaitlistForm } from "./waitlist-form";
 import { DEMO_URL } from "@/lib/marketing";
@@ -31,7 +31,7 @@ export function Hero() {
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
               Most funding applications fail for reasons owners never saw
-              coming. Capita-Lens assesses your business across key areas
+              coming. Sadora-Lens assesses your business across key areas
               lenders, investors and grant providers commonly consider, then
               provides practical recommendations to help you become funding-ready.
             </p>

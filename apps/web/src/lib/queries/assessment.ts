@@ -1,4 +1,4 @@
-import { db, schema, eq, and, desc, type AnswerValue } from "@capita/db";
+import { db, schema, eq, and, desc, type AnswerValue } from "@sadora/db";
 
 /** The published default template with ordered sections, questions, categories. */
 export async function getPublishedTemplate() {

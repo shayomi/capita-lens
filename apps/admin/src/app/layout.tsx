@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { fontVariables } from "@capita/ui/fonts";
+import { fontVariables } from "@sadora/ui/fonts";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Capita-Lens Admin",
-    template: "%s · Capita-Lens Admin",
+    default: "Sadora-Lens Admin",
+    template: "%s · Sadora-Lens Admin",
   },
-  description: "Capita-Lens administration console.",
+  description: "Sadora-Lens administration console.",
 };
 
 export default function RootLayout({

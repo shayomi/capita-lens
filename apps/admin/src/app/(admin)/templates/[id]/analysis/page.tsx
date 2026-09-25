@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { db, schema, eq, type AnalysisConfig } from "@capita/db";
+import { db, schema, eq, type AnalysisConfig } from "@sadora/db";
 import { AnalysisStudio } from "@/components/analysis-studio";
 
 export const metadata = { title: "Analysis Studio" };

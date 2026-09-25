@@ -1,4 +1,4 @@
-import { Card } from "@capita/ui";
+import { Card } from "@sadora/ui";
 
 /** Placeholder for screens landing in a later build phase. */
 export function Wip({ title, note }: { title: string; note: string }) {

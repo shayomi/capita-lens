@@ -3,7 +3,7 @@ import type {
   QuestionScoring,
   ConditionalLogic,
   CategoryThresholds,
-} from "@capita/db";
+} from "@sadora/db";
 
 export type {
   AnswerValue,

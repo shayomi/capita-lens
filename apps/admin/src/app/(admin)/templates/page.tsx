@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
-import { Button, Badge } from "@capita/ui";
+import { Button, Badge } from "@sadora/ui";
 import { listTemplates } from "@/lib/queries";
 import { Table, THead, TH, TRow, TD, EmptyRow } from "@/components/data-table";
 

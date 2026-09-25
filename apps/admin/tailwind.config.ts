@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import preset from "@capita/config/tailwind";
+import preset from "@sadora/config/tailwind";
 
 export default {
   presets: [preset],

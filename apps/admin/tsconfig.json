@@ -1,5 +1,5 @@
 {
-  "extends": "@capita/config/tsconfig/next",
+  "extends": "@sadora/config/tsconfig/next",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

@@ -1,5 +1,5 @@
 import { Target } from "lucide-react";
-import { Card } from "@capita/ui";
+import { Card } from "@sadora/ui";
 import type { FundingObjective } from "@/lib/queries/dashboard";
 
 /** "What you're pursuing" banner that frames the dashboard around the goal. */

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { Card, Button } from "@capita/ui";
+import { Card, Button } from "@sadora/ui";
 
 /** Shown on the dashboard before the user completes their first assessment. */
 export function EmptyAssessment() {

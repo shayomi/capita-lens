@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card } from "@capita/ui";
+import { Card } from "@sadora/ui";
 
 /**
  * Calm hero visual: the business seen "through a lender's eyes". Deliberately
@@ -63,7 +63,7 @@ export function LenderLens() {
 
       <div className="border-t border-border/60 bg-brand-muted/40 px-5 py-4">
         <p className="text-sm">
-          <span className="font-semibold text-brand">Capita-Lens</span> helps
+          <span className="font-semibold text-brand">Sadora-Lens</span> helps
           you prepare against these commonly assessed areas, and shows you how
           to potentially turn a <span className="font-medium">no</span> into a{" "}
           <span className="font-medium">yes</span>.

@@ -22,4 +22,4 @@ const globalForR2 = globalThis as unknown as { r2?: S3Client };
 export const r2 = globalForR2.r2 ?? createR2Client();
 if (process.env.NODE_ENV !== "production") globalForR2.r2 = r2;
 
-export const R2_BUCKET = process.env.R2_BUCKET ?? "capita-lens";
+export const R2_BUCKET = process.env.R2_BUCKET ?? "sadora-lens";

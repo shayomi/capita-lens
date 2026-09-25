@@ -1,5 +1,5 @@
 {
-  "name": "@capita/web",
+  "name": "@sadora/web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,12 +11,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@capita/ai": "workspace:*",
-    "@capita/auth": "workspace:*",
-    "@capita/core": "workspace:*",
-    "@capita/db": "workspace:*",
-    "@capita/storage": "workspace:*",
-    "@capita/ui": "workspace:*",
+    "@sadora/ai": "workspace:*",
+    "@sadora/auth": "workspace:*",
+    "@sadora/core": "workspace:*",
+    "@sadora/db": "workspace:*",
+    "@sadora/storage": "workspace:*",
+    "@sadora/ui": "workspace:*",
     "@neondatabase/auth": "latest",
     "@neondatabase/auth-ui": "latest",
     "dotenv": "^16.4.7",
@@ -29,7 +29,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@capita/config": "workspace:*",
+    "@sadora/config": "workspace:*",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",

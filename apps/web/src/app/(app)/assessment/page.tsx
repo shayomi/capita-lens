@@ -1,5 +1,5 @@
-import { requireUser } from "@capita/auth";
-import { Card } from "@capita/ui";
+import { requireUser } from "@sadora/auth";
+import { Card } from "@sadora/ui";
 import { auth } from "@/lib/auth/server";
 import {
   getPublishedTemplate,

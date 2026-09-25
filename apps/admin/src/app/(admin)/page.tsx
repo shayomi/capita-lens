@@ -20,7 +20,7 @@ import {
   TrendChart,
   BarBreakdown,
   type BreakdownDatum,
-} from "@capita/ui";
+} from "@sadora/ui";
 import {
   getOverviewStats,
   getSignupsSeries,

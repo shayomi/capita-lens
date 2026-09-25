@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge } from "@capita/ui";
+import { Badge } from "@sadora/ui";
 import { listSubmissions } from "@/lib/queries";
 import { Table, THead, TH, TRow, TD, EmptyRow } from "@/components/data-table";
 

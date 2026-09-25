@@ -8,20 +8,20 @@ import {
   and,
   type AnswerValue,
   type QuestionOption,
-} from "@capita/db";
-import { requireUser } from "@capita/auth";
+} from "@sadora/db";
+import { requireUser } from "@sadora/auth";
 import {
   runAssessment,
   type EngineQuestion,
   type EngineCategory,
   type AnswerMap,
-} from "@capita/core";
+} from "@sadora/core";
 import {
   runAiAnalysis,
   AiUnavailableError,
   type AnalysisSectionResult,
-} from "@capita/ai";
-import { buildDocumentKey, getUploadUrl } from "@capita/storage";
+} from "@sadora/ai";
+import { buildDocumentKey, getUploadUrl } from "@sadora/storage";
 import { auth } from "@/lib/auth/server";
 import { formatAnswer } from "@/lib/format-answer";
 

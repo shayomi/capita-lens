@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "@capita/ui";
+import { cn } from "@sadora/ui";
 
 /** Minimal, dense enterprise table primitives shared across admin lists. */
 export function Table({ children }: { children: React.ReactNode }) {

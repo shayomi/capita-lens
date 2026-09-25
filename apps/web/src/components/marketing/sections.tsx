@@ -19,7 +19,7 @@ import {
   Gauge,
   ListChecks,
 } from "lucide-react";
-import { Card, Badge } from "@capita/ui";
+import { Card, Badge } from "@sadora/ui";
 import { Reveal, StaggerGroup, staggerItem } from "./motion";
 
 const EASE = [0.21, 0.47, 0.32, 0.98] as const;
@@ -125,7 +125,7 @@ const CONCEPTS = [
     icon: Brain,
     color: "#6366f1",
     title: "Decision Intelligence",
-    body: "Unlike traditional financial tools that monitor isolated metrics, Capita-Lens combines financial, operational, governance, documentation and behavioural signals into a single capital readiness assessment.",
+    body: "Unlike traditional financial tools that monitor isolated metrics, Sadora-Lens combines financial, operational, governance, documentation and behavioural signals into a single capital readiness assessment.",
   },
   {
     icon: ShieldCheck,

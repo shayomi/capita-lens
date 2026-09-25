@@ -1,4 +1,4 @@
-import { db, schema, count, desc, eq, and, gte, sql } from "@capita/db";
+import { db, schema, count, desc, eq, and, gte, sql } from "@sadora/db";
 
 /** Headline counts for the admin overview. */
 export async function getOverviewStats() {

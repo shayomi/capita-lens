@@ -1,10 +1,10 @@
-**Capita-Lens Product Requirements Brief (MVP)**
+**Sadora-Lens Product Requirements Brief (MVP)**
 
 **1. Product Overview**
 
-**What is Capita-Lens?**
+**What is Sadora-Lens?**
 
-Capita-Lens is a cloud-based Software-as-a-Service (SaaS) platform that
+Sadora-Lens is a cloud-based Software-as-a-Service (SaaS) platform that
 helps Small and Medium-sized Enterprises (SMEs) prepare for external
 finance before approaching lenders or investors.
 
@@ -14,7 +14,7 @@ financial, operational, governance and compliance factors that are
 commonly considered during commercial funding assessments.
 
 Rather than relying on a single indicator such as a business credit
-score, Capita-Lens provides businesses with a holistic understanding of
+score, Sadora-Lens provides businesses with a holistic understanding of
 their overall capital readiness.
 
 The platform does **not** guarantee funding approval. Instead, it helps
@@ -80,11 +80,11 @@ By then it is often too late.
 
 **3. The Solution**
 
-Capita-Lens gives SMEs the opportunity to assess themselves before a
+Sadora-Lens gives SMEs the opportunity to assess themselves before a
 lender does.
 
 Instead of forcing businesses to use multiple disconnected services,
-Capita-Lens brings these readiness considerations into one intelligent
+Sadora-Lens brings these readiness considerations into one intelligent
 platform.
 
 Users receive:
@@ -405,7 +405,7 @@ Not like:
 
 **12. Long-Term Vision**
 
-Capita-Lens should become the platform SMEs visit **before** approaching
+Sadora-Lens should become the platform SMEs visit **before** approaching
 external finance.
 
 Rather than asking:
@@ -421,6 +421,6 @@ The long-term objective is to become the UK\'s leading Capital Readiness
 platform, enabling SMEs to understand, assess and continuously improve
 the broad range of factors commonly considered during commercial funding
 assessments. Through its proprietary Decision Intelligence Framework,
-Capita-Lens aims to make funding preparation more transparent,
+Sadora-Lens aims to make funding preparation more transparent,
 structured and accessible, helping businesses approach lenders and
 investors with greater confidence and better-quality applications.

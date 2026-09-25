@@ -16,4 +16,4 @@ export function createAuth(options?: { cookieDomain?: string }) {
   });
 }
 
-export type CapitaAuth = ReturnType<typeof createAuth>;
+export type SadoraAuth = ReturnType<typeof createAuth>;

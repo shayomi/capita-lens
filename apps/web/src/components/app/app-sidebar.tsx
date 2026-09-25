@@ -9,7 +9,7 @@ import {
   FolderOpen,
   Settings,
 } from "lucide-react";
-import { Logo, cn } from "@capita/ui";
+import { Logo, cn } from "@sadora/ui";
 
 const NAV = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },

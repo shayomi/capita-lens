@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@capita/ui";
+import { Button } from "@sadora/ui";
 
 export default function UnauthorisedPage() {
   return (

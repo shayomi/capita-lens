@@ -1,5 +1,5 @@
 {
-  "name": "@capita/storage",
+  "name": "@sadora/storage",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -15,7 +15,7 @@
     "nanoid": "^5.0.9"
   },
   "devDependencies": {
-    "@capita/config": "workspace:*",
+    "@sadora/config": "workspace:*",
     "typescript": "^5.7.3"
   }
 }

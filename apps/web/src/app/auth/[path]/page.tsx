@@ -5,7 +5,7 @@ import {
   CheckCircle2,
   ShieldCheck,
 } from "lucide-react";
-import { Badge, Logo } from "@capita/ui";
+import { Badge, Logo } from "@sadora/ui";
 
 export const dynamicParams = false;
 

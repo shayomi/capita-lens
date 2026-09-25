@@ -20,19 +20,19 @@ importers:
 
   apps/admin:
     dependencies:
-      '@capita/auth':
+      '@sadora/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@capita/core':
+      '@sadora/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@capita/db':
+      '@sadora/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@capita/storage':
+      '@sadora/storage':
         specifier: workspace:*
         version: link:../../packages/storage
-      '@capita/ui':
+      '@sadora/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@neondatabase/auth':
@@ -63,7 +63,7 @@ importers:
         specifier: ^19.0.0
         version: 19.2.8(react@19.2.8)
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@types/node':
@@ -93,22 +93,22 @@ importers:
 
   apps/web:
     dependencies:
-      '@capita/ai':
+      '@sadora/ai':
         specifier: workspace:*
         version: link:../../packages/ai
-      '@capita/auth':
+      '@sadora/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@capita/core':
+      '@sadora/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@capita/db':
+      '@sadora/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@capita/storage':
+      '@sadora/storage':
         specifier: workspace:*
         version: link:../../packages/storage
-      '@capita/ui':
+      '@sadora/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@neondatabase/auth':
@@ -142,7 +142,7 @@ importers:
         specifier: ^3.24.1
         version: 3.25.76
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@types/node':
@@ -172,7 +172,7 @@ importers:
 
   packages/ai:
     dependencies:
-      '@capita/db':
+      '@sadora/db':
         specifier: workspace:*
         version: link:../db
       openai:
@@ -182,7 +182,7 @@ importers:
         specifier: ^3.24.1
         version: 3.25.76
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../config
       typescript:
@@ -191,7 +191,7 @@ importers:
 
   packages/auth:
     dependencies:
-      '@capita/db':
+      '@sadora/db':
         specifier: workspace:*
         version: link:../db
       '@neondatabase/auth':
@@ -204,7 +204,7 @@ importers:
         specifier: ^19.0.0
         version: 19.2.8
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../config
       typescript:
@@ -232,14 +232,14 @@ importers:
 
   packages/core:
     dependencies:
-      '@capita/db':
+      '@sadora/db':
         specifier: workspace:*
         version: link:../db
       zod:
         specifier: ^3.24.1
         version: 3.25.76
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../config
       typescript:
@@ -255,7 +255,7 @@ importers:
         specifier: ^0.38.3
         version: 0.38.4(@neondatabase/serverless@0.10.4)(@opentelemetry/api@1.9.1)(@types/pg@8.11.6)(@types/react@19.2.17)(kysely@0.28.17)(react@19.2.8)
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../config
       dotenv:
@@ -283,7 +283,7 @@ importers:
         specifier: ^5.0.9
         version: 5.1.16
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../config
       typescript:
@@ -341,7 +341,7 @@ importers:
         specifier: ^2.6.0
         version: 2.6.1
     devDependencies:
-      '@capita/config':
+      '@sadora/config':
         specifier: workspace:*
         version: link:../config
       '@types/react':

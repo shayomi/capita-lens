@@ -1,7 +1,7 @@
 "use client";
 
 import { Download } from "lucide-react";
-import { Button } from "@capita/ui";
+import { Button } from "@sadora/ui";
 
 /** Client-side CSV export of a list of flat records. */
 export function ExportCsv<T extends Record<string, unknown>>({

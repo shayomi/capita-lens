@@ -1,4 +1,4 @@
-**Capita-Lens Onboarding Assessment**
+**Sadora-Lens Onboarding Assessment**
 
 **STEP 1 --- Welcome**
 
@@ -10,7 +10,7 @@
 
 **Subheading**
 
-Capita-Lens helps you assess your business from the perspective of a
+Sadora-Lens helps you assess your business from the perspective of a
 lender or investor. This assessment typically takes 15--20 minutes.
 
 Progress Bar
@@ -475,7 +475,7 @@ New Risks
 
 Next Review Date
 
-**One thing I think would make Capita-Lens genuinely different**
+**One thing I think would make Sadora-Lens genuinely different**
 
 After everything we\'ve discussed, I would **avoid making the onboarding
 feel like a static questionnaire**.
@@ -504,4 +504,4 @@ This approach makes the onboarding itself part of the product\'s value.
 The user isn\'t just completing a form---they\'re **learning** how
 lenders and investors typically think, while simultaneously building
 their Capital Readiness Profile. I think that\'s much closer to the
-experience you\'ve consistently described wanting Capita-
+experience you\'ve consistently described wanting Sadora-

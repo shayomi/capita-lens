@@ -1,5 +1,5 @@
 import { UserButton } from "@neondatabase/auth-ui";
-import type { AppUser } from "@capita/auth";
+import type { AppUser } from "@sadora/auth";
 
 export function AppTopbar({ user }: { user: AppUser }) {
   const name = user.displayName ?? user.email.split("@")[0];

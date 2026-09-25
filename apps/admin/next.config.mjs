@@ -11,11 +11,11 @@ const nextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: root,
   transpilePackages: [
-    "@capita/ui",
-    "@capita/auth",
-    "@capita/core",
-    "@capita/db",
-    "@capita/storage",
+    "@sadora/ui",
+    "@sadora/auth",
+    "@sadora/core",
+    "@sadora/db",
+    "@sadora/storage",
   ],
   experimental: {
     optimizePackageImports: ["lucide-react"],

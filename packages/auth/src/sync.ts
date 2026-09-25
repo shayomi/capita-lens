@@ -1,5 +1,5 @@
 import "server-only";
-import { db, schema, eq } from "@capita/db";
+import { db, schema, eq } from "@sadora/db";
 import type { Role } from "./roles";
 
 /**
@@ -37,7 +37,7 @@ export interface AuthUserLike {
  * subsequent logins — it's owned by our app / admins, not the auth provider.
  */
 export async function syncUser(authUser: AuthUserLike): Promise<AppUser> {
-  const email = authUser.email ?? `${authUser.id}@no-email.capita`;
+  const email = authUser.email ?? `${authUser.id}@no-email.sadora`;
 
   const [row] = await db
     .insert(schema.users)

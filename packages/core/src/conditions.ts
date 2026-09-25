@@ -1,5 +1,5 @@
 import type { AnswerMap, ConditionalLogic } from "./types";
-import type { Condition } from "@capita/db";
+import type { Condition } from "@sadora/db";
 
 /** Extract a comparable primitive/array from a stored answer value. */
 function rawValue(map: AnswerMap, key: string): unknown {

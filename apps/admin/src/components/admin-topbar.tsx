@@ -1,6 +1,6 @@
 import { UserButton } from "@neondatabase/auth-ui";
-import { Badge } from "@capita/ui";
-import type { AppUser } from "@capita/auth";
+import { Badge } from "@sadora/ui";
+import type { AppUser } from "@sadora/auth";
 
 const ROLE_LABEL: Record<string, string> = {
   admin: "Admin",

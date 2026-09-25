@@ -1,7 +1,7 @@
 import type {
   AnalysisConfig,
   AnalysisSectionResult,
-} from "@capita/db";
+} from "@sadora/db";
 
 export type { AnalysisConfig, AnalysisSectionResult };
 

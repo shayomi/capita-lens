@@ -1,4 +1,4 @@
-# Capita-Lens
+# Sadora-Lens
 
 Capital Readiness platform for UK SMEs. A Turborepo monorepo with two Next.js
 apps (user web app + admin console) sharing a dynamic questionnaire engine, a
@@ -29,7 +29,7 @@ Edit **`.env`** at the repo root (already gitignored). Both apps read from it.
 | `R2_ACCOUNT_ID` | Cloudflare dashboard → R2 → account ID. |
 | `R2_ACCESS_KEY_ID` | Cloudflare → R2 → **Manage API Tokens** → Access Key ID. |
 | `R2_SECRET_ACCESS_KEY` | Same token → Secret Access Key. |
-| `R2_BUCKET` | Your R2 bucket name (default `capita-lens`). |
+| `R2_BUCKET` | Your R2 bucket name (default `sadora-lens`). |
 | `R2_PUBLIC_URL` | Optional — public bucket / custom domain base URL for served files. |
 | `OPENAI_API_KEY` | OpenAI key — powers AI assessment analysis. If unset, the deterministic engine is used as fallback. |
 | `OPENAI_MODEL` | Optional — model id (default `gpt-4o`); also overridable per template in the admin Analysis Studio. |
@@ -76,7 +76,7 @@ Just sign up at `:3000/auth/sign-up`, then open the admin console at `:3001`.
 - Admins build **templates → sections → questions** (typed, with scoring weights,
   conditional logic and conversational feedback) in the admin app.
 - The user app renders the published template as a guided assessment.
-- `@capita/core` runs the **Decision Intelligence Framework** — a pure function
+- `@sadora/core` runs the **Decision Intelligence Framework** — a pure function
   `(answers + template) → overall score, category scores, risks, roadmap` — driven
   entirely by data on the questions/categories, so admins tune behaviour without a
   deploy.

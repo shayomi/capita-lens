@@ -1,4 +1,4 @@
-import { Badge } from "@capita/ui";
+import { Badge } from "@sadora/ui";
 import { listUsers } from "@/lib/queries";
 import { Table, THead, TH, TRow, TD, EmptyRow } from "@/components/data-table";
 
@@ -18,7 +18,7 @@ export default async function UsersPage() {
       <div>
         <h1 className="font-display text-2xl font-semibold">Users</h1>
         <p className="text-sm text-muted-foreground">
-          Everyone with a Capita-Lens account. Role changes are restricted to
+          Everyone with a Sadora-Lens account. Role changes are restricted to
           super admins.
         </p>
       </div>

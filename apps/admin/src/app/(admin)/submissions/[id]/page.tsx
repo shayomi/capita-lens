@@ -10,8 +10,8 @@ import {
   Badge,
   ScoreRing,
   Separator,
-} from "@capita/ui";
-import type { AnswerValue, AnalysisSectionResult } from "@capita/db";
+} from "@sadora/ui";
+import type { AnswerValue, AnalysisSectionResult } from "@sadora/db";
 import { getSubmissionDetail, type SubmissionDetail } from "@/lib/queries";
 
 export const metadata = { title: "Submission" };

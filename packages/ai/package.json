@@ -1,5 +1,5 @@
 {
-  "name": "@capita/ai",
+  "name": "@sadora/ai",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,12 +10,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@capita/db": "workspace:*",
+    "@sadora/db": "workspace:*",
     "openai": "^4.77.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@capita/config": "workspace:*",
+    "@sadora/config": "workspace:*",
     "typescript": "^5.7.3"
   }
 }

@@ -15,8 +15,8 @@ import {
   Separator,
   Badge,
   cn,
-} from "@capita/ui";
-import type { AnalysisConfig } from "@capita/db";
+} from "@sadora/ui";
+import type { AnalysisConfig } from "@sadora/db";
 import { saveAnalysisConfig } from "@/app/(admin)/templates/[id]/analysis/actions";
 
 const slug = (s: string) =>

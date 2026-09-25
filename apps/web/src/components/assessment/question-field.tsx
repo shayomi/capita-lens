@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Info, ShieldCheck, AlertTriangle } from "lucide-react";
-import { Input, Textarea, Label, cn } from "@capita/ui";
+import { Input, Textarea, Label, cn } from "@sadora/ui";
 import type { AnswerValue, ClientQuestion } from "./types";
 import { FileUpload } from "./file-upload";
 

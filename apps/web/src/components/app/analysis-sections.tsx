@@ -1,5 +1,5 @@
-import { Card } from "@capita/ui";
-import type { AnalysisSectionResult } from "@capita/db";
+import { Card } from "@sadora/ui";
+import type { AnalysisSectionResult } from "@sadora/db";
 
 /** Renders the AI's custom narrative sections (Executive Summary, etc.). */
 export function AnalysisSections({

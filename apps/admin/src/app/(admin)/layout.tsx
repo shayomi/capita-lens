@@ -1,4 +1,4 @@
-import { requireAdmin } from "@capita/auth";
+import { requireAdmin } from "@sadora/auth";
 import { auth } from "@/lib/auth/server";
 import { AdminSidebar } from "@/components/admin-sidebar";
 import { AdminTopbar } from "@/components/admin-topbar";

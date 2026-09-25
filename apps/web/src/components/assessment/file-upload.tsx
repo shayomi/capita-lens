@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Upload, FileCheck2, Loader2 } from "lucide-react";
-import { cn } from "@capita/ui";
+import { cn } from "@sadora/ui";
 import { createUploadUrl, confirmUpload } from "@/app/(app)/assessment/actions";
 
 interface Props {

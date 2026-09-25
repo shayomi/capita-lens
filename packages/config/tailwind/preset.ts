@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 
 /**
- * Capita-Lens shared Tailwind preset.
+ * Sadora-Lens shared Tailwind preset.
  *
  * Design language: Bloomberg data-density + Stripe polish + Linear speed.
  * Colors are driven by CSS variables (see packages/ui/src/styles/globals.css)

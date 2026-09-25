@@ -1,4 +1,4 @@
-import { db, schema, eq, and, desc, type AnswerValue } from "@capita/db";
+import { db, schema, eq, and, desc, type AnswerValue } from "@sadora/db";
 import { formatAnswer } from "@/lib/format-answer";
 
 export interface SnapshotItem {

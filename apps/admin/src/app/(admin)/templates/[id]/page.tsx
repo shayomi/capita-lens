@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Sparkles } from "lucide-react";
-import { Card, Badge, Button } from "@capita/ui";
+import { Card, Badge, Button } from "@sadora/ui";
 import { getTemplateDetail } from "@/lib/queries";
 
 export const metadata = { title: "Template" };

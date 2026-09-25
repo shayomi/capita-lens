@@ -5,7 +5,7 @@ export default function UnauthorisedPage() {
         Admin access required
       </h1>
       <p className="max-w-sm text-muted-foreground">
-        Your account doesn&apos;t have permission to use the Capita-Lens admin
+        Your account doesn&apos;t have permission to use the Sadora-Lens admin
         console. Contact a super admin if you believe this is an error.
       </p>
     </div>

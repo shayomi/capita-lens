@@ -1,5 +1,5 @@
 import { FileX2, FileCheck2 } from "lucide-react";
-import { Card } from "@capita/ui";
+import { Card } from "@sadora/ui";
 
 /** Evidence gaps a lender would expect you to provide. */
 export function MissingEvidence({ items }: { items: string[] }) {

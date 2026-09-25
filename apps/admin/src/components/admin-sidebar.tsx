@@ -10,7 +10,7 @@ import {
   SlidersHorizontal,
   Mails,
 } from "lucide-react";
-import { Logo, cn, Badge } from "@capita/ui";
+import { Logo, cn, Badge } from "@sadora/ui";
 
 const NAV = [
   { label: "Overview", href: "/", icon: LayoutGrid },

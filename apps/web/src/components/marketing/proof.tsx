@@ -11,7 +11,7 @@ import {
   Check,
   X,
 } from "lucide-react";
-import { Card, Badge } from "@capita/ui";
+import { Card, Badge } from "@sadora/ui";
 import { Reveal, StaggerGroup, staggerItem } from "./motion";
 
 // ── Dashboard as proof: the funding story ────────────────────────────
@@ -103,7 +103,7 @@ export function Differentiation() {
             Not a credit check. Not a dashboard.
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Other tools show you one slice. Capita-Lens measures your overall
+            Other tools show you one slice. Sadora-Lens measures your overall
             funding readiness continuously, using financial, operational,
             governance, documentation and behavioural signals together.
           </p>
@@ -127,7 +127,7 @@ export function Differentiation() {
           <Reveal delay={0.15}>
             <div className="flex items-center gap-3 rounded-lg border border-brand/40 bg-brand-muted/50 px-4 py-4 ring-1 ring-brand/20">
               <Check className="size-5 shrink-0 text-brand" />
-              <span className="font-semibold">Capita-Lens</span>
+              <span className="font-semibold">Sadora-Lens</span>
               <span className="ml-auto text-right text-sm">
                 Helps assess overall funding readiness and provides tailored
                 guidance on how to improve it.
